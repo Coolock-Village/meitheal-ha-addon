@@ -20,6 +20,21 @@ Meitheal is the Home Assistant-native execution hub for the practical work of ru
 5. Start the add-on
 6. Open the Web UI
 
+### Local testing without Home Assistant
+
+```bash
+# Build from repo root
+podman build --build-arg BUILD_FROM="ghcr.io/home-assistant/amd64-base:3.23" \
+  -f meitheal-hub/Dockerfile -t local/meitheal .
+
+# Run standalone (no Supervisor)
+podman run --rm -p 3333:3000 -v /tmp/meitheal-data:/data \
+  local/meitheal /run-local.sh
+
+# Verify
+curl http://localhost:3333/api/health
+```
+
 ## First Run Inside Home Assistant
 
 1. Confirm Home Assistant discovers the bundled Meitheal integration in **Settings → Devices & Services**
@@ -88,6 +103,8 @@ Meitheal is designed to stay usable through Home Assistant companion flows and a
 - x-callback-url and URL handler flows are surfaced directly in Settings
 - offline support keeps the app shell and queued task changes available when connectivity drops
 
+See `docs/companion-app-setup.md` and `docs/kcs/pwa-offline-guide.md` for deeper setup guidance.
+
 ## Runtime Notes
 
 - Default database path: `/data/meitheal.db`
@@ -120,8 +137,12 @@ The add-on ships with a restrictive AppArmor profile and uses Home Assistant's a
 - `image` in `config.yaml` must keep the `{arch}` suffix
 - published version tags must match the add-on version
 - `repository.yaml` must remain present for repository publishing
-- add-on assets such as `icon.png` and `logo.png` must remain present
+- add-on assets such as `apparmor.txt`, `icon.png`, and `logo.png` must remain present
 
-## Source Code
+## Where To Read Next
 
-The full source code for Meitheal is maintained in a separate repository. For bug reports, feature requests, and contributions, please visit the [issue tracker](https://github.com/Coolock-Village/meitheal-ha-addon/issues).
+- `README.md` — product story and quick orientation
+- `WEBMCP.md` — agent protocol breakdown
+- `docs/companion-app-setup.md` — mobile and companion details
+- `docs/kcs/pwa-offline-guide.md` — offline and installability behavior
+- `docs/kcs/search-hub-guide.md` — SearchHub and search parity
