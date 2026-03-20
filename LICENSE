@@ -1,17 +1,66 @@
-GNU AFFERO GENERAL PUBLIC LICENSE
-Version 3, 19 November 2007
+Meitheal — Proprietary Distribution License
 
-Copyright (C) 2026 Coolock Village
+Copyright (c) 2026 Ryan Winkler / Coolock Village. All rights reserved.
 
-This program is free software: you can redistribute it and/or modify
-it under the terms of the GNU Affero General Public License as published by
-the Free Software Foundation, either version 3 of the License, or
-(at your option) any later version.
+DISTRIBUTED SOFTWARE LICENSE AGREEMENT
 
-This program is distributed in the hope that it will be useful,
-but WITHOUT ANY WARRANTY; without even the implied warranty of
-MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
-GNU Affero General Public License for more details.
+This license applies to the pre-built binary images distributed through
+this repository and the associated container registries (GHCR, Docker Hub).
 
-You should have received a copy of the GNU Affero General Public License
-along with this program. If not, see <https://www.gnu.org/licenses/>.
+1. GRANT OF LICENSE
+
+   You are granted a non-exclusive, non-transferable, revocable license to:
+
+   (a) Download, install, and run Meitheal as a Home Assistant add-on for
+       your own personal, household, or homelab use.
+
+   (b) Use all features of the software for any lawful purpose within your
+       own Home Assistant instance.
+
+2. RESTRICTIONS
+
+   You may NOT:
+
+   (a) Redistribute, sublicense, or resell the software or its binaries.
+
+   (b) Reverse-engineer, decompile, or extract source code from the
+       distributed binaries for the purpose of creating derivative works.
+
+   (c) Host the software as a service for third parties (SaaS) without a
+       separate commercial license agreement.
+
+   (d) Remove or alter any proprietary notices, labels, or branding.
+
+3. OPEN-SOURCE COMPONENTS
+
+   This software includes open-source dependencies governed by their own
+   licenses (MIT, Apache 2.0, ISC, etc.). Those licenses are unaffected by
+   this agreement and are included in the distributed images.
+
+   The Vikunja compatibility layer included in the software is licensed
+   under the GNU Affero General Public License v3.0 (AGPL-3.0) and is
+   subject to that license's terms.
+
+4. COMMERCIAL LICENSING
+
+   For commercial use, SaaS hosting, OEM distribution, or white-label
+   arrangements, contact: licensing@coolockvillage.ie
+
+   See: https://github.com/Coolock-Village/meitheal-ha-addon/blob/main/COMMERCIAL.md
+
+5. SOURCE CODE AVAILABILITY
+
+   The source code for Meitheal is maintained privately. Contributors and
+   commercial licensees may be granted access under separate agreements.
+
+6. DISCLAIMER OF WARRANTY
+
+   THIS SOFTWARE IS PROVIDED "AS IS" WITHOUT WARRANTY OF ANY KIND, EXPRESS
+   OR IMPLIED. THE AUTHOR SHALL NOT BE LIABLE FOR ANY DAMAGES ARISING FROM
+   THE USE OF THIS SOFTWARE.
+
+7. TERMINATION
+
+   This license is effective until terminated. It terminates automatically
+   if you violate any of its terms. Upon termination, you must destroy all
+   copies of the software in your possession.
