@@ -22,4 +22,4 @@ Home Assistant can list Meitheal and Meitheal Canary from this repository. On 9 
 - [Community conduct](CODE_OF_CONDUCT.md)
 - [Report a security problem privately](SECURITY.md)
 
-The application source is maintained privately. The [distribution license](LICENSE) covers the pre-built images. See [commercial terms](COMMERCIAL.md) for other uses.
+Read the [Meitheal application source](https://github.com/ryan-winkler/meitheal) to build or contribute to the app. The [distribution license](LICENSE) covers the pre-built images. See [commercial terms](COMMERCIAL.md) for other uses.

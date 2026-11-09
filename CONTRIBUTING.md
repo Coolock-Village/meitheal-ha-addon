@@ -18,6 +18,6 @@ For a suspected vulnerability, use the [private reporting route](SECURITY.md).
 4. Open a pull request.
 5. List the version you used and the steps you checked.
 
-The add-on setup guides sync from the private source repository. The maintainer will apply fixes there so they stay in both places.
+The add-on setup guides sync from the [source repository](https://github.com/ryan-winkler/meitheal). The maintainer will apply fixes there so they stay in both places.
 
 Use sample tasks in screenshots. Remove access tokens, addresses, and household details from logs and images.
