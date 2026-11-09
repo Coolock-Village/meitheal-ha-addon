@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Known install problem
+    url: https://github.com/Coolock-Village/meitheal-ha-addon/issues/1
+    about: Check this issue if the image download returns 401.
+  - name: Report a security problem privately
+    url: https://github.com/Coolock-Village/meitheal-ha-addon/blob/main/SECURITY.md
+    about: Use email for a suspected vulnerability.
