@@ -2,7 +2,7 @@
 
 ## A download fails
 
-Open the Supervisor log and look for the first error for Meitheal. If it shows `401` for the image download, follow [the install issue](https://github.com/Coolock-Village/meitheal-ha-addon/issues/1).
+Open the Supervisor log and look for the first error for Meitheal. If it shows `401` for the image download, follow [the install issue](https://github.com/ryan-winkler/meitheal-ha-addon/issues/1).
 
 For a different error, include the add-on name, version, Home Assistant OS version, and device architecture in your report.
 
