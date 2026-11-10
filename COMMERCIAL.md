@@ -1,21 +1,17 @@
 # Commercial Licensing — Meitheal
 
-Meitheal is developed and maintained by Ryan Winkler / Coolock Village.
+Meitheal is maintained by Ryan Winkler.
 
 Pre-built binaries distributed via this repository and container registries
 are provided under a [proprietary license](LICENSE) for personal and homelab use.
 
-## When Do You Need a Commercial License?
+## Source and images
 
-| Scenario | Free Use | Commercial License |
-|----------|----------|-------------------|
-| Self-hosting for your own household / homelab | ✅ | Not needed |
-| Building plugins via the REST/WebSocket/MCP APIs | ✅ | Not needed |
-| Hosting Meitheal as a service for others (SaaS) | ❌ | Required |
-| Embedding Meitheal in proprietary software | ❌ | Required |
-| OEM / white-label distribution | ❌ | Required |
+The [Meitheal source release](https://github.com/ryan-winkler/meitheal) has its own license. That license permits internal business use and restricts paid copies, access, and Meitheal-specific services. See the [source terms](https://github.com/ryan-winkler/meitheal/blob/main/COMMERCIAL.md).
+
+Earlier container images remain covered by the [image distribution license](LICENSE). Check the version and terms before using an image at work.
 
 ## Contact
 
 - **Email**: licensing@coolockvillage.ie
-- **Discussions**: [Coolock Village Discussions](https://github.com/orgs/Coolock-Village/discussions)
+- [Public support issues](https://github.com/Coolock-Village/meitheal-ha-addon/issues)
