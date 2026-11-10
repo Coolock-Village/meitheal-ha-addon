@@ -1,46 +1,25 @@
-# Coolock Village Home Assistant Add-ons
+# Meitheal
 
-[![Add repository to HA](https://img.shields.io/badge/Home%20Assistant-Add%20Repository-blue?logo=home-assistant)](https://my.home-assistant.io/redirect/supervisor_add_addon_repository/?repository_url=https%3A%2F%2Fgithub.com%2FCoolock-Village%2Fmeitheal-ha-addon)
+Meitheal helps you keep track of household tasks and routines in Home Assistant. Write down a job when you notice it. Give it a due date when it needs one. Open **Today** to review what needs attention.
 
-Home Assistant add-on repository for **Meitheal** — your homelab's execution layer.
+For example, add **Replace the kitchen filter** and set a due date. When you finish the job, mark the task complete.
 
-## Add-ons
+## Install status
 
-### Meitheal (Stable)
+Home Assistant can list Meitheal and Meitheal Canary from this repository. On 9 November 2026, the registry rejected public downloads for both listed builds on amd64 and aarch64. If your install fails with `401`, follow [the install issue](https://github.com/Coolock-Village/meitheal-ha-addon/issues/1) for updates.
 
-Centralize tasks, automate coordination, get out of the way of life.
+## Get started
 
-- **HA-Native** — Built as a first-class Home Assistant app. Ingress, WebSocket, Supervisor lifecycle.
-- **Built on Astro** — Astro SSR, ViewTransitions, strict perf budgets.
-- **Calendar Sync** — Bidirectional sync with HA calendar entities.
-- **Voice & Assist** — 21 LLM tools for any HA conversation agent.
-- **Smart Notifications** — Sidebar, mobile push, calendar reminders.
-- **3+ Views** — List, Kanban, Table, Calendar, Today, Upcoming. Drag-and-drop, swimlanes, inline editing.
-- **Data Portability** — JSON/CSV export, SQLite download, settings backup.
+- [Add the repository and open Meitheal](meitheal-hub/DOCS.md)
+- [Create your first task](docs/first-task.md)
+- [Test the Canary build](meitheal-hub-canary/DOCS.md)
+- [See what changed](meitheal-hub/CHANGELOG.md)
 
-### Meitheal Canary (Experimental)
+## Get help or contribute
 
-⚠️ Bleeding-edge development build. Auto-updates on every commit to `main`. May be unstable, break, or lose data.
+- [Get help and report a problem](SUPPORT.md)
+- [Improve the guides](CONTRIBUTING.md)
+- [Community conduct](CODE_OF_CONDUCT.md)
+- [Report a security problem privately](SECURITY.md)
 
-## Quick Install
-
-1. **Settings** → **Add-ons** → **Add-on Store** → **⋮** → **Repositories**
-2. Add: `https://github.com/Coolock-Village/meitheal-ha-addon`
-3. Find **Meitheal** → **Install** → **Start** → **Open Web UI**
-
-Or click the badge above to add the repository automatically.
-
-## Documentation
-
-- [Meitheal Docs](meitheal-hub/DOCS.md)
-- [Meitheal Canary Docs](meitheal-hub-canary/DOCS.md)
-- [Changelog](meitheal-hub/CHANGELOG.md)
-
-## Support
-
-- [Discussions](https://github.com/orgs/Coolock-Village/discussions) — questions, ideas, community
-- [Issues](https://github.com/Coolock-Village/meitheal-ha-addon/issues) — bug reports, feature requests
-
-## License
-
-[AGPL-3.0](LICENSE)
+Read the [Meitheal application source](https://github.com/ryan-winkler/meitheal) to build or contribute to the app. The source release has its own [license](https://github.com/ryan-winkler/meitheal/blob/main/LICENSE). The [distribution license](LICENSE) covers the pre-built images. See [commercial terms](COMMERCIAL.md) for other uses.

@@ -1,5 +1,5 @@
-# Changelog — Meitheal Canary
+# Meitheal Canary changes
 
-Canary builds are versioned by commit SHA and auto-published on every push to `main`.
+The version in the store identifies the source commit used to build Canary.
 
-For the full project changelog, see the [main CHANGELOG](../CHANGELOG.md).
+See the [stable changelog](https://github.com/Coolock-Village/meitheal-ha-addon/blob/main/meitheal-hub/CHANGELOG.md) for versioned release notes.

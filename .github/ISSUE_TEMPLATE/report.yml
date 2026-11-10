@@ -1,0 +1,26 @@
+name: Report a Meitheal problem
+description: Report a failed install, a task problem, or an incorrect guide.
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Remove tokens, private addresses, and household details. Use the [security policy](https://github.com/Coolock-Village/meitheal-ha-addon/blob/main/SECURITY.md) for a suspected vulnerability.
+  - type: textarea
+    id: steps
+    attributes:
+      label: What were you doing?
+      description: List the steps you took the last time the problem happened. For a guide, include its link.
+    validations:
+      required: true
+  - type: textarea
+    id: result
+    attributes:
+      label: What happened?
+      description: Include the result you expected and the first error you saw.
+    validations:
+      required: true
+  - type: input
+    id: version
+    attributes:
+      label: Versions and device
+      description: Include the Meitheal version, Home Assistant OS version, and device architecture if you know them.
