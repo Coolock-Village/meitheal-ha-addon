@@ -14,7 +14,7 @@ An update to the same installed App keeps its data. Changing the repository URL 
 
 Before replacing an existing installation, make a Home Assistant backup that includes Meitheal and verify you can recover its data and settings.
 
-If you use the separate Meitheal Core integration, disable automatic updates before updating, including when the App keeps the same identity. Follow the [integration credential migration](https://github.com/ryan-winkler/meitheal/blob/fec6e08e09f315dec31a2c9242b6ef91c6949e10/docs/kcs/home-assistant-core-credentials.md) and verify an authenticated native task read before installing the Canary. Verify native reads and any task actions you use again after the update, then restore your automatic update preference.
+If you use the separate Meitheal Core integration, disable automatic updates before every update, including updates to the same installed App. If your App exposes **Agent Tokens**, follow the [integration credential migration](https://github.com/ryan-winkler/meitheal/blob/fec6e08e09f315dec31a2c9242b6ef91c6949e10/docs/kcs/home-assistant-core-credentials.md) and verify an authenticated native task read before updating. Otherwise, follow the maintenance-window guidance below. Verify native reads and any task actions you use again after the update, then restore your automatic update preference.
 
 If your older App does not expose **Agent Tokens** in Settings, stage the updated Core integration and update the App in the same maintenance window. Create a dedicated token in the updated App, then reauthenticate or reconfigure the existing Core entry. Core task actions can be unavailable until this is complete. Verify that the same to-do entity loads and that the actions you use work before ending the maintenance window.
 
