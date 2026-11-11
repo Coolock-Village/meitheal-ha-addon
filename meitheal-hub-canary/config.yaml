@@ -1,5 +1,7 @@
 name: "Meitheal Canary"
 version: "b2e25f8c5cf5"
+breaking_versions:
+  - "b2e25f8c5cf5"
 slug: "meitheal_canary"
 description: "⚠️ Bleeding-edge development build of Meitheal — may be unstable, break, or lose data. For testing and development only."
 url: "https://github.com/ryan-winkler/meitheal-ha-addon"
@@ -18,20 +20,15 @@ ingress_entry: /
 homeassistant_api: true
 hassio_api: true
 hassio_role: manager
-auth_api: true
 discovery:
   - meitheal
 panel_icon: mdi:flask-outline
 panel_title: "Meitheal Canary"
 panel_admin: false
 apparmor: true
-map:
-  - homeassistant_config:rw
 tmpfs: true
 watchdog: http://[HOST]:[PORT:3000]/api/health
-backup: hot
-backup_pre: /etc/services.d/meitheal/backup-pre.sh
-backup_post: /etc/services.d/meitheal/backup-post.sh
+backup: cold
 backup_exclude:
   - "*.log"
   - "*.tmp"
@@ -45,7 +42,7 @@ options:
     - observability
   log_redaction: true
   audit_enabled: true
-  loki_url: "http://a0d7b954-loki:3100/loki/api/v1/push"
+  loki_url: ""
   license_key: ""
 schema:
   log_level: list(debug|info|warn|error)
