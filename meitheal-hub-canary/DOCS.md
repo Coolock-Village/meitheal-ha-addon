@@ -1,38 +1,19 @@
 # Meitheal Canary
 
-> ⚠️ **This is the bleeding-edge development build.** It auto-updates on every commit to `main` and may be unstable, break, or lose data. For the stable release, install **Meitheal** instead.
+Canary receives selected Meitheal builds for testing. Each release identifies its source commit. Check the changelog before updating and keep a current backup of your Meitheal data.
 
-## What is Canary?
+## Install Canary
 
-Meitheal Canary is the development channel for Meitheal. Every commit merged to `main` triggers an automatic build and publish. This gives testers and developers access to the latest features before they're promoted to a stable release.
+1. In Home Assistant, go to **Settings → Apps → Install app**.
+2. Open the top-right menu, choose **Repositories**, and add `https://github.com/ryan-winkler/meitheal-ha-addon`.
+3. Select **Meitheal Canary**, then **Install** and **Start**.
 
-## Installation
+## Keep your data when moving an installation
 
-1. Go to **Settings → Add-ons → Add-on Store → ⋮ → Repositories**
-2. Add: `https://github.com/Coolock-Village/meitheal-ha-addon`
-3. Find **Meitheal Canary** (look for the flask icon 🧪) → Install → Start
+An update to the same installed App keeps its data. Changing the repository URL or switching channels can give the App a different identity and a separate data directory.
 
-## Differences from Stable
+Before replacing an existing installation, make a Home Assistant backup that includes Meitheal and verify you can recover its data and settings. Follow the migration instructions in the release notes if the App identity changes. If you use the separate Meitheal Core integration, verify its connection after the move.
 
-| Aspect | Meitheal (Stable) | Meitheal Canary |
-|--------|-------------------|-----------------|
-| Updates | Manual version releases | Every `main` commit |
-| Stability | Tested, verified | May break at any time |
-| Version | Semver (0.0.1, 0.1.0) | Commit SHA (abc1234) |
-| Stage | `stable` | `experimental` |
-| Icon | 👥 (mdi:account-group) | 🧪 (mdi:flask-outline) |
+## Report an issue
 
-## Reporting Issues
-
-If you find a bug on Canary, check if it also exists on Stable:
-
-- **Canary-only bug**: May already be fixed in the next commit. Wait a day, then report.
-- **Both channels**: Report at [GitHub Issues](https://github.com/Coolock-Village/meitheal-ha-addon/issues) with the SHA version from Settings.
-
-## Switching Channels
-
-You cannot run both Stable and Canary simultaneously (same ingress port). To switch:
-
-1. Stop and uninstall the current channel's addon
-2. Install the other channel
-3. Your data in `/data/meitheal.db` is preserved between channels
+Include the Canary version, your Home Assistant version, and the steps to reproduce the issue. Remove access tokens and household data from any logs or screenshots. [GitHub Issues](https://github.com/ryan-winkler/meitheal-ha-addon/issues)
