@@ -5,7 +5,7 @@ Canary versions identify a source commit. Images are promoted after release chec
 ## fec6e08e09f3
 
 - Preserve existing Eisenhower scores when a task read fails.
-- Prepare the Home Assistant integration credential before updating. Turn off automatic updates on older installations until that migration is complete; this version is marked as a breaking change.
+- Turn off automatic updates and prepare the Home Assistant integration credential before updating. If the old App does not expose **Agent Tokens**, stage the updated integration, update the App, then create the token and reauthenticate or reconfigure the existing entry in the same maintenance window. Verify the integration before restoring your automatic update preference.
 - Backups stop the App before archiving SQLite. The App no longer mounts Home Assistant configuration or requests the unused authentication API grant. Loki forwarding starts only when configured.
 
 Use the public source build with board keyboard navigation and task actions. This update continues through the existing Meitheal Canary image family.
