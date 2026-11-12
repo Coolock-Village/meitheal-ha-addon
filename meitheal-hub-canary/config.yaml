@@ -1,7 +1,5 @@
 name: "Meitheal Canary"
-version: "fec6e08e09f3"
-breaking_versions:
-  - "fec6e08e09f3"
+version: "12b35a44606e"
 slug: "meitheal_canary"
 description: "⚠️ Bleeding-edge development build of Meitheal — may be unstable, break, or lose data. For testing and development only."
 url: "https://github.com/ryan-winkler/meitheal-ha-addon"
