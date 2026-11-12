@@ -1,23 +1,32 @@
-# Meitheal Canary
+# Meitheal Canary — Home Assistant Documentation
 
-Canary receives selected Meitheal builds for testing. Each release identifies its source commit. Check the changelog before updating and keep a current backup of your Meitheal data.
+**Meitheal Canary** (`/meh·hal/`) is the preview channel for Meitheal — letting you test upcoming household task, routine, project, and Home Assistant integration improvements before they are promoted to a tagged Stable release.
 
-## Install Canary
+Each Canary build identifies its exact source commit SHA and runs inside its own isolated Home Assistant App container (`meitheal_canary`).
 
-1. In Home Assistant, go to **Settings → Apps → Install app**.
-2. Open the top-right menu, choose **Repositories**, and add `https://github.com/ryan-winkler/meitheal-ha-addon`.
-3. Select **Meitheal Canary**, then **Install** and **Start**.
+## When to Choose Canary vs. Stable
 
-## Keep your data when moving an installation
+| Channel | App Name | Best For | Update Cadence |
+|---|---|---|---|
+| **Stable** | **Meitheal** | Everyday household production use | Tagged SemVer releases |
+| **Canary** | **Meitheal Canary** | Previewing new features and validating fixes early | Commit-stamped preview builds |
 
-An update to the same installed App keeps its data. Changing the repository URL or switching channels can give the App a different identity and a separate data directory.
+## 1. Install Meitheal Canary
 
-Before replacing an existing installation, make a Home Assistant backup that includes Meitheal and verify you can recover its data and settings.
+1. In Home Assistant, open **Settings → Apps → Install app** (or **Settings → Add-ons → Add-on Store**).
+2. Open the top-right **⋮** menu, select **Repositories**, and add `https://github.com/ryan-winkler/meitheal-ha-addon`.
+3. Select **Meitheal Canary**, then select **Install** and **Start**.
+4. Enable **Show in sidebar** if you want quick access, then select **Open web UI**.
 
-If you use the separate Meitheal Core integration, disable automatic updates before every update, including updates to the same installed App. If your App exposes **Agent Tokens**, follow the [integration credential migration](https://github.com/ryan-winkler/meitheal/blob/fec6e08e09f315dec31a2c9242b6ef91c6949e10/docs/kcs/home-assistant-core-credentials.md) and verify an authenticated native task read before updating. Otherwise, follow the maintenance-window guidance below. Verify native reads and any task actions you use again after the update, then restore your automatic update preference.
+## 2. Keep Your Data Safe When Updating or Moving Channels
 
-If your older App does not expose **Agent Tokens** in Settings, stage the updated Core integration and update the App in the same maintenance window. Create a dedicated token in the updated App, then reauthenticate or reconfigure the existing Core entry. Core task actions can be unavailable until this is complete. Verify that the same to-do entity loads and that the actions you use work before ending the maintenance window.
+An update to the same installed App keeps its `/data/meitheal.db` database. Changing the repository URL or switching between **Meitheal** and **Meitheal Canary** gives the App a separate data directory — always make a Home Assistant backup that includes Meitheal before replacing an installation.
 
-## Report an issue
+If you use the separate Meitheal Core integration in **Settings → Devices & Services**, disable automatic updates before updating:
 
-Include the Canary version, your Home Assistant version, and the steps to reproduce the issue. Remove access tokens and household data from any logs or screenshots. [GitHub Issues](https://github.com/ryan-winkler/meitheal-ha-addon/issues)
+- If your current App already exposes **Agent Tokens** in **Settings → Automation & AI**, follow the [integration credential migration](https://github.com/ryan-winkler/meitheal/blob/fec6e08e09f315dec31a2c9242b6ef91c6949e10/docs/kcs/home-assistant-core-credentials.md) and verify an authenticated native task read before and after updating.
+- If upgrading from an older build without **Agent Tokens**, update the Core integration and the App in the same maintenance window, create a dedicated scoped token in the updated App, and reauthenticate or reconfigure the Core entry so `todo.meitheal_tasks` and task actions stay connected.
+
+## 3. Report an Issue
+
+Include the Canary commit version shown on the App **Info** tab, your Home Assistant version, and the steps to reproduce the issue. Remove access tokens and private household data from any logs or screenshots before posting to [GitHub Issues](https://github.com/ryan-winkler/meitheal-ha-addon/issues).

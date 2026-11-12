@@ -1,148 +1,76 @@
-# Meitheal Add-on Docs
+# Meitheal — Home Assistant Documentation
 
-Meitheal is the Home Assistant-native execution hub for the practical work of running a home or homelab. It brings tasks, daily planning, routines, calendar-linked work, companion flows, voice control, and agent tooling into one local-first system.
+**Meitheal** (`/meh·hal/`) keeps track of the work your home needs — bringing household tasks, recurring routines, multi-step home projects, and Home Assistant automations into one local-first app in your Home Assistant sidebar.
 
-## What You Get
+All data stays on your own hardware in `/data/meitheal.db` and is included in standard Home Assistant backups.
 
-- A Home Assistant add-on with an Astro SSR web app
-- A bundled custom component that exposes todo, sensors, services, intents, and agent surfaces inside Home Assistant
-- Search, Settings, PWA, companion, and offline flows that are aware of Home Assistant ingress
-- Optional integrations for calendars, Grocy, Node-RED, n8n, webhooks, and agent protocols
+## What You Can Track
 
-## Installation
+| Household Need | Example in Meitheal | Home Assistant Connection |
+|---|---|---|
+| **Sensor-triggered follow-up** | *Close the back door — still open after 21:45 check* | Created via `meitheal.create_task` or webhook when a sensor stays open |
+| **Shared daily & weekly routines** | *School morning bags — lunch, books, and PE kit* | Daily or weekly Routine templates with step-by-step checklists |
+| **Preventive maintenance** | *Replace kitchen under-sink water filter cartridge* | Due dates synced with Home Assistant calendars and `todo.meitheal_tasks` |
+| **Seasonal home projects** | *Winter Boiler and Heating Prep* | Grouped by **Area** and **Project** across **Today**, **Kanban**, **Table**, and **Calendar** |
 
-### Home Assistant add-on repository
+## 1. Add the Repository & Install
 
-1. Open **Settings** → **Add-ons** → **Add-on Store**
-2. Open **⋮** → **Repositories**
-3. Add `https://github.com/ryan-winkler/meitheal-ha-addon`
-4. Install **Meitheal**
-5. Start the add-on
-6. Open the Web UI
+1. In Home Assistant, open **Settings → Apps → Install app** (or **Settings → Add-ons → Add-on Store** on earlier Home Assistant versions).
+2. Open the top-right **⋮** menu and select **Repositories**.
+3. Add `https://github.com/ryan-winkler/meitheal-ha-addon`.
+4. Select **Meitheal** from the store list.
+5. Select **Install**, wait for the container image download to complete, and select **Start**.
+6. Enable **Show in sidebar** for one-click household access, then select **Open web UI**.
 
-### Local testing without Home Assistant
+> **Note:** If an existing Meitheal installation is already running on your system from another repository URL, create a Home Assistant backup before switching entries. If Supervisor logs a `401` image download error on a cached manifest, check [install status (#1)](https://github.com/ryan-winkler/meitheal-ha-addon/issues/1) and reload the store.
 
-```bash
-# Build from repo root
-podman build --build-arg BUILD_FROM="ghcr.io/home-assistant/amd64-base:3.23" \
-  -f meitheal-hub/Dockerfile -t local/meitheal .
+## 2. Your First 5 Minutes in Meitheal
 
-# Run standalone (no Supervisor)
-podman run --rm -p 3333:3000 -v /tmp/meitheal-data:/data \
-  local/meitheal /run-local.sh
+1. Open **Today** from the sidebar.
+2. In the **Add a task for today** box, enter a real job around the house — for example, `Replace kitchen water filter tomorrow` or `Check hallway smoke sensor` — and select **Add**.
+3. Open **Tasks** to view your work as a **Kanban** board, **Table**, **Calendar**, or **Timeline**.
+4. Press `/` (or `Ctrl/Cmd + K`) from anywhere to open **Search Hub** and jump straight to any task, project, area, or setting.
+5. Visit **Settings → Personal** to choose **Dark**, **Light**, or **Auto** theme, pick an accent color, and set your regional date/week preferences.
 
-# Verify
-curl http://localhost:3333/api/health
-```
+## 3. Connect Home Assistant Calendars, To-Do & Assist
 
-## First Run Inside Home Assistant
+### Calendar & To-Do Sync
 
-1. Confirm Home Assistant discovers the bundled Meitheal integration in **Settings → Devices & Services**
-2. Open the add-on UI and confirm the dashboard loads behind ingress
-3. Visit **Settings** in Meitheal to check integrations, companion guidance, App & PWA status, and agent protocol settings
+Open **Settings → Integrations** inside Meitheal to:
 
-## Home Assistant Surfaces
+- Connect Home Assistant calendar entities and choose your sync direction before enabling sync.
+- Link Home Assistant to-do lists so household checklists stay aligned across dashboards and mobile cards.
 
-### Entities
+### Home Assistant Custom Integration (Entities, Actions & Assist)
 
-- `todo.meitheal_tasks`
-- `sensor.meitheal_active_tasks`
-- `sensor.meitheal_overdue_tasks`
-- `sensor.meitheal_total_tasks`
+When paired with the Meitheal Home Assistant integration (**Settings → Devices & Services**):
 
-### Services
+- **Entities exposed**: `todo.meitheal_tasks`, `sensor.meitheal_active_tasks`, `sensor.meitheal_overdue_tasks`, and `sensor.meitheal_total_tasks`.
+- **Services available**: `meitheal.create_task`, `meitheal.complete_task`, `meitheal.complete_task_by_tag`, `meitheal.sync_todo`, `meitheal.search_tasks`, `meitheal.get_overdue_tasks`, and `meitheal.notify_overdue`.
+- **Assist & Voice**: Expose `todo.meitheal_tasks` under **Settings → Voice assistants → Expose** using a scoped token created in **Meitheal → Settings → Automation & AI**.
 
-- `meitheal.create_task`
-- `meitheal.complete_task`
-- `meitheal.sync_todo`
-- `meitheal.search_tasks`
-- `meitheal.get_overdue_tasks`
-- `meitheal.complete_task_by_tag`
-- `meitheal.notify_overdue`
+## 4. Companion App, PWA & Offline Access
 
-### Built-in voice support
+- **Home Assistant Companion**: Meitheal runs cleanly inside Home Assistant Ingress on iOS and Android. Copy ingress-safe Companion deep links and `x-callback-url` shortcuts from **Settings → App & PWA**.
+- **Installable PWA**: When served over HTTPS, Meitheal can be installed to your home screen or desktop with offline app-shell caching and queued task updates.
 
-Meitheal registers Home Assistant intents so core voice flows work even without an LLM. Exposing `todo.meitheal_tasks` to Assist gives you a fast path for common commands like adding tasks, completing tasks, checking what is overdue, and getting today-oriented summaries.
+## 5. Backups, Exports & Data Ownership
 
-## Voice, LLM, and Agent Surfaces
+- **Home Assistant Backups**: Meitheal uses `backup: cold` so SQLite writes are cleanly flushed when Home Assistant creates a full or partial backup. Always create a backup before uninstalling or switching between **Meitheal** and **Meitheal Canary**.
+- **Open Exports**: Download your tasks and database anytime as **JSON**, **CSV**, or raw **SQLite** from **Settings → Workflow / Data**.
 
-When the custom component is available on HA 2026.3+, Home Assistant registers **Meitheal Tasks** as an LLM API.
+## Configuration Options
 
-Surface-specific counts matter here:
+| Option | Default | Purpose |
+|---|---|---|
+| `log_level` | `info` | Structured log verbosity (`debug`, `info`, `warn`, `error`) |
+| `log_categories` | `auth, tasks, integrations, observability` | Active structured log domains |
+| `log_redaction` | `true` | Redacts tokens, secrets, and credentials from logs by default |
+| `audit_enabled` | `true` | Records local audit events for task and token actions |
+| `loki_url` | `""` | Optional Grafana Loki push endpoint for homelab observability |
+| `license_key` | `""` | Optional offline Ed25519 license key (Meitheal runs fully in grace mode without a key) |
 
-- Astro MCP: generated tool inventory at `/api/mcp` (`tools/list`)
-- Home Assistant agent access: services and the HA LLM API; no separate MCP server
-- Home Assistant LLM API: 21 tools
-- A2A: gated synchronous task-title search; WebMCP: gated registration in supported browsers
+## Support & Troubleshooting
 
-The Home Assistant LLM API includes task CRUD, search, daily briefing, link management, remove-from-todo-list, area and goal listing, move-to-project, and goal progress updates.
-
-## Calendar and Todo Sync
-
-Meitheal includes bidirectional task syncing with Home Assistant todo and calendar surfaces.
-
-### Calendar sync
-
-When running as an HA add-on with `homeassistant_api: true`, Meitheal can:
-
-1. Detect calendar entities
-2. Pull calendar events into Meitheal task context
-3. Push eligible task due dates back to HA calendars
-4. Deduplicate repeated syncs safely
-
-### Todo sync
-
-The bundled custom component exposes `todo.meitheal_tasks`, which makes Meitheal visible in Home Assistant dashboards, Assist, and automation flows.
-
-## Companion App and PWA
-
-Meitheal is designed to stay usable through Home Assistant companion flows and as an installable PWA.
-
-- **Settings → App & PWA** explains installability, update state, and HTTPS requirements
-- companion-safe deep links use ingress-scoped paths
-- x-callback-url and URL handler flows are surfaced directly in Settings
-- offline support keeps the app shell and queued task changes available when connectivity drops
-
-See `docs/companion-app-setup.md` and `docs/kcs/pwa-offline-guide.md` for deeper setup guidance.
-
-## Runtime Notes
-
-- Default database path: `/data/meitheal.db`
-- Startup runs schema and migration checks
-- Supervisor/API access uses `SUPERVISOR_TOKEN` when available
-- Health endpoint: `GET /api/health`
-- Ingress behavior is first-class: Meitheal is designed to stay inside the Home Assistant iframe and companion webviews
-
-## Security
-
-### AppArmor and container isolation
-
-The add-on ships with a restrictive AppArmor profile and uses Home Assistant's add-on isolation model.
-
-### Auth model
-
-- Primary auth path: Home Assistant ingress and Supervisor identity headers
-- No separate cloud auth is required
-- Mutating routes use CSRF and origin/referer validation where applicable
-
-### Additional protections
-
-- structured logging with redaction
-- rate limiting
-- security headers
-- backup and export surfaces
-
-## Publishing Requirements
-
-- `image` in `config.yaml` must keep the `{arch}` suffix
-- published version tags must match the add-on version
-- `repository.yaml` must remain present for repository publishing
-- add-on assets such as `apparmor.txt`, `icon.png`, and `logo.png` must remain present
-
-## Where To Read Next
-
-- `README.md` — product story and quick orientation
-- `WEBMCP.md` — agent protocol breakdown
-- `docs/companion-app-setup.md` — mobile and companion details
-- `docs/kcs/pwa-offline-guide.md` — offline and installability behavior
-- `docs/kcs/search-hub-guide.md` — SearchHub and search parity
+- **Health check**: Watchdog monitors `GET /api/health` on internal port `3000`.
+- **Issue tracker**: Report bugs or setup questions at [github.com/ryan-winkler/meitheal-ha-addon/issues](https://github.com/ryan-winkler/meitheal-ha-addon/issues) with your Meitheal version and Home Assistant version (remove any private tokens or personal task titles first).
