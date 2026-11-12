@@ -22,7 +22,7 @@ All data stays on your own hardware in `/data/meitheal.db` and is included in st
 5. Select **Install**, wait for the container image download to complete, and select **Start**.
 6. Enable **Show in sidebar** for one-click household access, then select **Open web UI**.
 
-> **Note:** If an existing Meitheal installation is already running on your system from another repository URL, create a Home Assistant backup before switching entries. If Supervisor logs a `401` image download error on a cached manifest, check [install status (#1)](https://github.com/ryan-winkler/meitheal-ha-addon/issues/1) and reload the store.
+> **Note:** If an existing Meitheal installation is already running on your system from another repository URL, create a Home Assistant backup before switching entries. If Supervisor logs a `401` image download error during a release transition, check [install status (#1)](https://github.com/ryan-winkler/meitheal-ha-addon/issues/1) and reload the store.
 
 ## 2. Your First 5 Minutes in Meitheal
 

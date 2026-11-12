@@ -1,7 +1,5 @@
 name: "Meitheal Canary"
-version: "fec6e08e09f3"
-breaking_versions:
-  - "fec6e08e09f3"
+version: "12b35a44606e"
 slug: "meitheal_canary"
 description: "Preview channel for Meitheal — test upcoming household task, routine, project, and Home Assistant automation features before stable release."
 url: "https://github.com/ryan-winkler/meitheal-ha-addon"
