@@ -6,7 +6,7 @@ For example, add **Replace the kitchen filter** and set a due date. When you fin
 
 ## Install status
 
-Home Assistant can list Meitheal and Meitheal Canary from this repository. On 9 November 2026, the registry rejected public downloads for both listed builds on amd64 and aarch64. If your install fails with `401`, follow [the install issue](https://github.com/ryan-winkler/meitheal-ha-addon/issues/1) for updates.
+Home Assistant can list Meitheal and Meitheal Canary from this repository. Both entries use verified public container images on amd64 and aarch64. If you previously encountered a `401` error pulling image `0.0.1` (tracked in [issue #1](https://github.com/ryan-winkler/meitheal-ha-addon/issues/1)), reload the Home Assistant Add-on Store to get the updated manifest.
 
 ## Get started
 
