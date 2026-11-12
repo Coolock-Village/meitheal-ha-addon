@@ -4,6 +4,17 @@ Meitheal helps you keep track of household tasks and routines in Home Assistant.
 
 For example, add **Replace the kitchen filter** and set a due date. When you finish the job, mark the task complete.
 
+## Two-Repository Architecture
+
+This repository (`meitheal-ha-addon`) is the **lightweight Home Assistant App Store manifest catalog** for Meitheal. It is maintained separately from the source repository to keep Home Assistant Supervisor fast on user hardware:
+
+| Repository | Purpose | Contents | Who Uses It |
+|---|---|---|---|
+| **[meitheal-ha-addon](https://github.com/ryan-winkler/meitheal-ha-addon)** (this repo) | Home Assistant App Store catalog | Lightweight Store manifests (`config.yaml`), icons, translations, and install docs (~2 MB). | Home Assistant Supervisor & users installing Meitheal. |
+| **[meitheal](https://github.com/ryan-winkler/meitheal)** | Application source & CI | Full monorepo source code, Astro SSR app, DDD packages, E2E tests, Dockerfiles, and automated CI pipelines (`dev` is default). | Contributors, reviewers, and automated release builds. |
+
+Home Assistant Supervisor clones the full Git repository onto your device when you add a store URL and runs `git pull` on periodic store refreshes. Keeping this repository manifest-only ensures low-memory devices (such as Home Assistant Green or Raspberry Pi) do not download full monorepo history and test suites just to check for add-on updates.
+
 ## Install status
 
 Home Assistant can list Meitheal and Meitheal Canary from this repository. Both entries use verified public container images on amd64 and aarch64. If you previously encountered a `401` error pulling image `0.0.1` (tracked in [issue #1](https://github.com/ryan-winkler/meitheal-ha-addon/issues/1)), reload the Home Assistant Add-on Store to get the updated manifest.
@@ -13,7 +24,7 @@ Home Assistant can list Meitheal and Meitheal Canary from this repository. Both 
 - [Add the repository and open Meitheal](meitheal-hub/DOCS.md)
 - [Create your first task](docs/first-task.md)
 - [Test the Canary build](meitheal-hub-canary/DOCS.md)
-- [See what changed](meitheal-hub/CHANGELOG.md)
+- [Release notes & versions](https://github.com/ryan-winkler/meitheal/releases)
 
 ## Get help or contribute
 
