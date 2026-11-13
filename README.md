@@ -73,4 +73,4 @@ Home Assistant Supervisor clones the full Git repository onto your device when y
 - [Release Notes](https://github.com/ryan-winkler/meitheal/releases)
 - [Support & Issue Tracker](SUPPORT.md) · [Contributing](CONTRIBUTING.md) · [Code of Conduct](CODE_OF_CONDUCT.md) · [Security Policy](SECURITY.md)
 
-Read the [Meitheal application source](https://github.com/ryan-winkler/meitheal) to build from source or contribute. Source code is covered by its [source license](https://github.com/ryan-winkler/meitheal/blob/main/LICENSE); pre-built add-on container images are covered by the [distribution license](LICENSE) (free for personal and homelab use; see [COMMERCIAL.md](COMMERCIAL.md) for commercial terms).
+Read the [Meitheal application source](https://github.com/ryan-winkler/meitheal) to build from source or contribute. Source code is covered by its [source license](https://github.com/ryan-winkler/meitheal/blob/dev/LICENSE); pre-built add-on container images are covered by the [distribution license](LICENSE) (free for personal and homelab use; see [COMMERCIAL.md](COMMERCIAL.md) for commercial terms).
