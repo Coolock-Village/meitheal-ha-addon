@@ -2,7 +2,7 @@
 
 **Meitheal** (`/meh·hal/`) keeps track of the work your home needs — bringing household tasks, recurring routines, multi-step home projects, and Home Assistant automations into one local-first app in your Home Assistant sidebar.
 
-All data stays on your own hardware in `/data/meitheal.db` and is included in standard Home Assistant backups.
+Synced data stays on your own hardware in `/data/meitheal.db` and is included in standard Home Assistant backups. Offline PWA task changes stay in browser storage until they sync and are not included in Home Assistant backups.
 
 ## What You Can Track
 
@@ -43,11 +43,17 @@ Open **Settings → Integrations** inside Meitheal to:
 
 ### Home Assistant Custom Integration (Entities, Actions & Assist)
 
-When paired with the Meitheal Home Assistant integration (**Settings → Devices & Services**):
+The Meitheal Home Assistant custom integration is installed separately from this Supervisor App (see the [Home Assistant integration setup guide](https://github.com/ryan-winkler/meitheal/blob/dev/docs/kcs/home-assistant-marketplace.md)):
+
+1. Install `custom_components/meitheal` in Home Assistant and restart Core.
+2. In **Meitheal → Settings → Automation & AI**, create a scoped API token (`tasks:read` / `tasks:write`).
+3. In Home Assistant, open **Settings → Devices & Services → Add Integration → Meitheal** and pair using your Meitheal URL and scoped token.
+
+Once paired, Home Assistant exposes:
 
 - **Entities exposed**: `todo.meitheal_tasks`, `sensor.meitheal_active_tasks`, `sensor.meitheal_overdue_tasks`, and `sensor.meitheal_total_tasks`.
-- **Services available**: `meitheal.create_task`, `meitheal.complete_task`, `meitheal.complete_task_by_tag`, `meitheal.sync_todo`, `meitheal.search_tasks`, `meitheal.get_overdue_tasks`, and `meitheal.notify_overdue`.
-- **Assist & Voice**: Expose `todo.meitheal_tasks` under **Settings → Voice assistants → Expose** using a scoped token created in **Meitheal → Settings → Automation & AI**.
+- **Services available**: `meitheal.create_task`, `meitheal.complete_task`, `meitheal.sync_todo`, `meitheal.search_tasks`, `meitheal.get_overdue_tasks`, and `meitheal.notify_overdue`.
+- **Assist & Voice**: Expose `todo.meitheal_tasks` under **Settings → Voice assistants → Expose** using your enrolled scoped token.
 
 ## 4. Companion App, PWA & Offline Access
 

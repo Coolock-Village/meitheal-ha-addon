@@ -10,7 +10,7 @@
 
 **Meitheal** (`/meh·hal/`) is an Irish word for neighbors coming together to share the work that one household shouldn't carry alone.
 
-Inside Home Assistant, **Meitheal keeps track of the work your home needs** — combining household tasks, recurring family routines, seasonal maintenance projects, and Home Assistant sensor/calendar automations in one calm, local-first app in your sidebar. Every task lives in SQLite on your own device and is protected by standard Home Assistant backups.
+Inside Home Assistant, **Meitheal keeps track of the work your home needs** — combining household tasks, recurring family routines, seasonal maintenance projects, and Home Assistant sensor/calendar automations in one calm, local-first app in your sidebar. Synced tasks live in SQLite on your own device and are protected by standard Home Assistant backups; offline PWA task changes stay in browser storage until they sync and are not included in Home Assistant backups.
 
 ---
 
@@ -45,7 +45,7 @@ Or add the repository manually in under a minute:
 4. Choose **Meitheal** (or **Meitheal Canary** for preview builds) and select **Install**.
 5. Select **Start**, enable **Show in sidebar**, and click **Open web UI**.
 
-> **Install status:** Both **Meitheal** and **Meitheal Canary** pull verified multi-architecture (`amd64`, `aarch64`) container images. If you previously saw a `401` pull error on an older cached store manifest ([issue #1](https://github.com/ryan-winkler/meitheal-ha-addon/issues/1)), click **Check for updates / Reload** in the Home Assistant Store menu.
+> **Install status:** Both **Meitheal** (`fec6e08e09f3`) and **Meitheal Canary** (`12b35a44606e`) currently pull verified pre-release multi-architecture (`amd64`, `aarch64`) images from `ghcr.io/coolock-village/meitheal-canary-{arch}` while the first SemVer Stable release is finalized. If you previously saw a `401` pull error on an older cached store manifest ([issue #1](https://github.com/ryan-winkler/meitheal-ha-addon/issues/1)), click **Check for updates / Reload** in the Home Assistant Store menu.
 
 ## Available Channels in This Repository
 
