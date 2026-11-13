@@ -46,8 +46,8 @@ Open **Settings → Integrations** inside Meitheal to:
 The Meitheal Home Assistant custom integration is installed separately from this Supervisor App (see the [Home Assistant integration setup guide](https://github.com/ryan-winkler/meitheal/blob/dev/docs/kcs/home-assistant-marketplace.md)):
 
 1. Install `custom_components/meitheal` in Home Assistant and restart Core.
-2. In **Meitheal → Settings → Automation & AI**, create a scoped API token (`tasks:read` / `tasks:write`).
-3. In Home Assistant, open **Settings → Devices & Services → Add Integration → Meitheal** and pair using your Meitheal URL and scoped token.
+2. In **Meitheal → Settings → Automation & AI**, create a scoped API token (`tasks:read` and `tasks:write`, plus `search:read` for `meitheal.search_tasks` and `tasks:delete` if deleting items via `todo.meitheal_tasks`).
+3. In Home Assistant, open **Settings → Devices & Services → Add Integration → Meitheal**. Enter your Meitheal host, port, and HTTPS setting, then your scoped token (if Home Assistant auto-discovers the App, select the discovered **Meitheal** card and enter only the token).
 
 Once paired, Home Assistant exposes:
 
