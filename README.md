@@ -1,36 +1,76 @@
-# Meitheal
+# Meitheal for Home Assistant
 
-Meitheal helps you keep track of household tasks and routines in Home Assistant. Write down a job when you notice it. Give it a due date when it needs one. Open **Today** to review what needs attention.
+![Meitheal — Keep track of the work your home needs](docs/screenshots/brand-banner.png)
 
-For example, add **Replace the kitchen filter** and set a due date. When you finish the job, mark the task complete.
+[![Website](https://img.shields.io/badge/Website-meitheal.io-10231b?labelColor=101210&color=69e3b2)](https://meitheal.io)
+[![Home Assistant App Repository](https://img.shields.io/badge/Home%20Assistant-App%20Repository-18bcf2?logo=homeassistant&logoColor=white)](https://my.home-assistant.io/redirect/supervisor_add_addon_repository/?repository_url=https%3A%2F%2Fgithub.com%2Fryan-winkler%2Fmeitheal-ha-addon)
+[![Architectures](https://img.shields.io/badge/Arch-amd64%20%7C%20aarch64-1d211f)](meitheal-hub/config.yaml)
 
-## Two-Repository Architecture
+[meitheal.io](https://meitheal.io) · [Setup Guide](meitheal-hub/DOCS.md) · [Create Your First Task](docs/first-task.md) · [Canary Channel](meitheal-hub-canary/DOCS.md) · [Support & Issues](https://github.com/ryan-winkler/meitheal-ha-addon/issues)
 
-This repository (`meitheal-ha-addon`) is the **lightweight Home Assistant App Store manifest catalog** for Meitheal. It is maintained separately from the source repository to keep Home Assistant Supervisor fast on user hardware:
+**Meitheal** (`/meh·hal/`) is an Irish word for neighbors coming together to share the work that one household shouldn't carry alone.
+
+Inside Home Assistant, **Meitheal keeps track of the work your home needs** — combining household tasks, recurring family routines, seasonal maintenance projects, and Home Assistant sensor/calendar automations in one calm, local-first app in your sidebar. Synced tasks live in SQLite on your own device and are protected by standard Home Assistant backups; offline PWA task changes stay in browser storage until they sync and are not included in Home Assistant backups.
+
+---
+
+## Why Meitheal in Home Assistant?
+
+Home Assistant already notices what happens in your house; Meitheal helps the people living there follow through without one person carrying the entire mental checklist:
+
+| Home Signal or Rhythm | What Lands in Meitheal | How Your Household Uses It |
+|---|---|---|
+| `binary_sensor.back_door` open after `21:45` | **Close the back door — still open after 21:45 check** (`Critical`) | Surfaces immediately in **Today** and `todo.meitheal_tasks` until resolved |
+| Weekday morning prep | **School morning bags — lunch, books, and PE kit** | Shared routine checklist anyone can tick off on phone or wall tablet |
+| 6-month filter timer | **Replace kitchen under-sink water filter cartridge** | Scheduled ahead of time and synced to your Home Assistant calendar |
+| Multi-step home upkeep | **Winter Boiler and Heating Prep** | Organized by **Area** and **Project** across **Kanban**, **Table**, and **Calendar** |
+
+## Inside the App
+
+| Today — Daily Focus & Routines | Household Dashboard & Focus Queue |
+|---|---|
+| ![Meitheal Today view](docs/screenshots/today.png) | ![Meitheal Household Dashboard](docs/screenshots/dashboard.png) |
+| **Kanban & Project Board** | **Home Assistant-Native Settings** |
+| ![Meitheal Kanban board](docs/screenshots/kanban.png) | ![Meitheal Settings shell](docs/screenshots/settings.png) |
+
+## Quick Install in Home Assistant
+
+[![Add Repository to Home Assistant](https://my.home-assistant.io/badges/supervisor_add_addon_repository.svg)](https://my.home-assistant.io/redirect/supervisor_add_addon_repository/?repository_url=https%3A%2F%2Fgithub.com%2Fryan-winkler%2Fmeitheal-ha-addon)
+
+Or add the repository manually in under a minute:
+
+1. In Home Assistant, open **Settings → Apps → Install app** (called **Settings → Add-ons → Add-on Store** in earlier releases).
+2. Open the top-right **⋮** menu and select **Repositories**.
+3. Paste `https://github.com/ryan-winkler/meitheal-ha-addon` and select **Add**.
+4. Choose **Meitheal** (or **Meitheal Canary** for preview builds) and select **Install**.
+5. Select **Start**, enable **Show in sidebar**, and click **Open web UI**.
+
+> **Install status:** Both **Meitheal** (`fec6e08e09f3`) and **Meitheal Canary** (`12b35a44606e`) currently pull verified pre-release multi-architecture (`amd64`, `aarch64`) images from `ghcr.io/coolock-village/meitheal-canary-{arch}` while the first SemVer Stable release is finalized. If you previously saw a `401` pull error on an older cached store manifest ([issue #1](https://github.com/ryan-winkler/meitheal-ha-addon/issues/1)), click **Check for updates / Reload** in the Home Assistant Store menu.
+
+## Available Channels in This Repository
+
+| App | Directory | Purpose |
+|---|---|---|
+| **Meitheal** | [`meitheal-hub/`](meitheal-hub/DOCS.md) | Primary household installation with full setup, calendar/to-do sync, Companion, and backup guidance |
+| **Meitheal Canary** | [`meitheal-hub-canary/`](meitheal-hub-canary/DOCS.md) | Commit-stamped preview channel for testing upcoming features early in an isolated data directory |
+
+## Why Two Repositories?
+
+This repository (`meitheal-ha-addon`) is the **lightweight Home Assistant App Store catalog** for Meitheal:
 
 | Repository | Purpose | Contents | Who Uses It |
 |---|---|---|---|
-| **[meitheal-ha-addon](https://github.com/ryan-winkler/meitheal-ha-addon)** (this repo) | Home Assistant App Store catalog | Lightweight Store manifests (`config.yaml`), icons, translations, and install docs (~2 MB). | Home Assistant Supervisor & users installing Meitheal. |
+| **[meitheal-ha-addon](https://github.com/ryan-winkler/meitheal-ha-addon)** (this repo) | Home Assistant App Store catalog | Lightweight Store manifests (`config.yaml`), brand icons, translations, screenshots, and install guides (~2 MB). | Home Assistant Supervisor & users installing Meitheal. |
 | **[meitheal](https://github.com/ryan-winkler/meitheal)** | Application source & CI | Full monorepo source code, Astro SSR app, DDD packages, E2E tests, Dockerfiles, and automated CI pipelines (`dev` is default). | Contributors, reviewers, and automated release builds. |
 
-Home Assistant Supervisor clones the full Git repository onto your device when you add a store URL and runs `git pull` on periodic store refreshes. Keeping this repository manifest-only ensures low-memory devices (such as Home Assistant Green or Raspberry Pi) do not download full monorepo history and test suites just to check for add-on updates.
+Home Assistant Supervisor clones the full Git repository onto your device when you add a store URL and runs `git pull` on periodic refreshes. Keeping this catalog repository compact ensures low-memory hardware (such as Home Assistant Green or Raspberry Pi) stays fast and never downloads monorepo source or test suites just to check for app updates.
 
-## Install status
+## Guides, Support & Licensing
 
-Home Assistant can list Meitheal and Meitheal Canary from this repository. Both entries use verified public container images on amd64 and aarch64. If you previously encountered a `401` error pulling image `0.0.1` (tracked in [issue #1](https://github.com/ryan-winkler/meitheal-ha-addon/issues/1)), reload the Home Assistant Add-on Store to get the updated manifest.
+- [Add-on Setup & Configuration (`DOCS.md`)](meitheal-hub/DOCS.md)
+- [Create Your First Task](docs/first-task.md)
+- [Canary Channel Guide](meitheal-hub-canary/DOCS.md)
+- [Release Notes](https://github.com/ryan-winkler/meitheal/releases)
+- [Support & Issue Tracker](SUPPORT.md) · [Contributing](CONTRIBUTING.md) · [Code of Conduct](CODE_OF_CONDUCT.md) · [Security Policy](SECURITY.md)
 
-## Get started
-
-- [Add the repository and open Meitheal](meitheal-hub/DOCS.md)
-- [Create your first task](docs/first-task.md)
-- [Test the Canary build](meitheal-hub-canary/DOCS.md)
-- [Release notes & versions](https://github.com/ryan-winkler/meitheal/releases)
-
-## Get help or contribute
-
-- [Get help and report a problem](SUPPORT.md)
-- [Improve the guides](CONTRIBUTING.md)
-- [Community conduct](CODE_OF_CONDUCT.md)
-- [Report a security problem privately](SECURITY.md)
-
-Read the [Meitheal application source](https://github.com/ryan-winkler/meitheal) to build or contribute to the app. The source release has its own [license](https://github.com/ryan-winkler/meitheal/blob/main/LICENSE). The [distribution license](LICENSE) covers the pre-built images. See [commercial terms](COMMERCIAL.md) for other uses.
+Read the [Meitheal application source](https://github.com/ryan-winkler/meitheal) to build from source or contribute. Source code is covered by its [source license](https://github.com/ryan-winkler/meitheal/blob/dev/LICENSE); pre-built add-on container images are covered by the [distribution license](LICENSE) (free for personal and homelab use; see [COMMERCIAL.md](COMMERCIAL.md) for commercial terms).
