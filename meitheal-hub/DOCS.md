@@ -63,7 +63,7 @@ Once paired, Home Assistant exposes:
 ## 5. Backups, Exports & Data Ownership
 
 - **Home Assistant Backups**: Meitheal uses `backup: cold` so SQLite writes are cleanly flushed when Home Assistant creates a full or partial backup. Always create a backup before uninstalling or switching between **Meitheal** and **Meitheal Canary**.
-- **Open Exports**: Download your tasks and database anytime as **JSON**, **CSV**, or raw **SQLite** from **Settings → Workflow / Data**.
+- **Open Exports**: Download your tasks and database anytime as **JSON**, **CSV**, or raw **SQLite** from **Settings → App & PWA**. The **SQLite** download appears only for Home Assistant administrators.
 
 ## Configuration Options
 
